@@ -1,0 +1,467 @@
+(D2C) PS D:\D2C> python -m voice.bot
+2026-08-18 15:30:38.757 | INFO     | pipecat:<module>:54 - ᓚᘏᗢ Pipecat 1.7.0 (Python 3.12.12 (main, Feb 12 2026, 00:40:26) [MSC v.1944 64 bit (AMD64)]) ᓚᘏᗢ
+
+╭─────────────────────────────────────────────────────╮
+│ ᓚᘏᗢ PIPECAT DEVELOPMENT RUNNER                      │
+│                                                     │
+│ Learn about running bots locally and in production: │
+│ https://docs.pipecat.ai/pipecat/deployment/overview │
+╰─────────────────────────────────────────────────────╯
+
+🚀 Bot ready!
+   → Open: http://localhost:7860
+   → Enabled transports: webrtc, telephony, websocket
+   → Disabled transports: daily (install pipecat-ai[daily]), moq (install pipecat-ai[moq])
+   → Allowed origins: all (no restriction)
+
+Looking for dist directory at: D:\D2C\.venv\Lib\site-packages\pipecat_ai_prebuilt\client\dist
+2026-08-18 15:30:50.952 | DEBUG    | pipecat.transports.smallwebrtc.connection:<module>:67 - [SCTP] USERDATA_MAX_LENGTH set to 1100
+INFO:     Started server process [24496]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://localhost:7860 (Press CTRL+C to quit)
+INFO:     ::1:56280 - "GET /client/ HTTP/1.1" 304 Not Modified
+INFO:     ::1:56280 - "GET /client/assets/index-BkmX4qXE.js HTTP/1.1" 304 Not Modified
+INFO:     ::1:63234 - "GET /client/assets/index-4LGyvxXs.css HTTP/1.1" 304 Not Modified
+INFO:     ::1:63234 - "GET /client/assets/index-4LGyvxXs.css HTTP/1.1" 304 Not Modified
+INFO:     ::1:55011 - "GET /client/assets/index-BkmX4qXE.js HTTP/1.1" 304 Not Modified
+INFO:     ::1:63234 - "GET /client/assets/index.module-BotpBYFo.js HTTP/1.1" 304 Not Modified
+INFO:     ::1:63234 - "GET /client/pipecat-logo.svg HTTP/1.1" 304 Not Modified
+INFO:     ::1:63234 - "GET /client/favicon.svg HTTP/1.1" 304 Not Modified
+INFO:     ::1:55011 - "GET /client/assets/index.module-BotpBYFo.js HTTP/1.1" 304 Not Modified
+2026-08-18 15:31:09.535 | DEBUG    | pipecat.runner.run:start_agent:671 - Received request: {'createDailyRoom': False, 'enableDefaultIceServers': True, 'transport': 'webrtc'}
+INFO:     ::1:63234 - "POST /start HTTP/1.1" 200 OK
+2026-08-18 15:31:11.596 | DEBUG    | pipecat.transports.smallwebrtc.connection:_initialize:311 - Initializing new peer connection
+2026-08-18 15:31:11.700 | DEBUG    | pipecat.transports.smallwebrtc.connection:_create_answer:404 - Creating answer
+2026-08-18 15:31:11.715 | DEBUG    | pipecat.transports.smallwebrtc.connection:on_track:386 - Track audio received
+2026-08-18 15:31:11.728 | DEBUG    | pipecat.transports.smallwebrtc.connection:on_track:386 - Track video received
+2026-08-18 15:31:11.742 | DEBUG    | pipecat.transports.smallwebrtc.connection:on_track:386 - Track video received
+2026-08-18 15:31:11.774 | DEBUG    | pipecat.transports.smallwebrtc.connection:on_icegatheringstatechange:382 - ICE gathering state is gathering
+2026-08-18 15:31:11.778 | DEBUG    | pipecat.transports.smallwebrtc.connection:on_icegatheringstatechange:382 - ICE gathering state is complete
+2026-08-18 15:31:11.779 | DEBUG    | pipecat.transports.smallwebrtc.connection:_create_answer:407 - Setting the answer after the local description is created
+2026-08-18 15:31:11.780 | DEBUG    | pipecat.transports.smallwebrtc.request_handler:handle_web_request:218 - webrtc_connection_callback executed successfully for peer: SmallWebRTCConnection#0-afd367a4264347e6ad2e8a3547f305a1
+INFO:     ::1:63234 - "POST /sessions/bfee6238-1c28-4eb4-9e3e-23349c39fb52/api/offer HTTP/1.1" 200 OK
+2026-08-18 15:31:11.784 | DEBUG    | pipecat.audio.vad.silero:__init__:147 - Loading Silero VAD model...
+2026-08-18 15:31:12.048 | DEBUG    | pipecat.audio.vad.silero:__init__:169 - Loaded Silero VAD
+2026-08-18 15:31:12.056 | DEBUG    | pipecat.runner.utils:_get_transport_params:480 - Using transport params for webrtc
+2026-08-18 15:31:12.073 | INFO     | __main__:run_bot:50 - Phase 2 voice bot starting (SupportRuntime wired)
+D:\D2C\voice\pipeline.py:78: DeprecationWarning: The `voice` parameter is deprecated. Use `settings=OpenAITTSService.Settings(voice=...)` instead. If both are provided, `settings` takes precedence.
+  tts = OpenAITTSService(
+2026-08-18 15:31:12.433 | DEBUG    | pipecat.processors.frame_processor:link:577 - Linking Pipeline#0::Source -> SmallWebRTCInputTransport#0
+2026-08-18 15:31:12.433 | DEBUG    | pipecat.processors.frame_processor:link:577 - Linking SmallWebRTCInputTransport#0 -> OpenAISTTService#0
+2026-08-18 15:31:12.434 | DEBUG    | pipecat.processors.frame_processor:link:577 - Linking OpenAISTTService#0 -> SupportRuntimeResponder#0
+2026-08-18 15:31:12.434 | DEBUG    | pipecat.processors.frame_processor:link:577 - Linking SupportRuntimeResponder#0 -> OpenAITTSService#0
+2026-08-18 15:31:12.434 | DEBUG    | pipecat.processors.frame_processor:link:577 - Linking OpenAITTSService#0 -> SmallWebRTCOutputTransport#0
+2026-08-18 15:31:12.434 | DEBUG    | pipecat.processors.frame_processor:link:577 - Linking SmallWebRTCOutputTransport#0 -> Pipeline#0::Sink
+2026-08-18 15:31:12.436 | DEBUG    | pipecat.processors.frame_processor:link:577 - Linking PipelineWorker#0::Source -> RTVIProcessor#0
+2026-08-18 15:31:12.437 | DEBUG    | pipecat.processors.frame_processor:link:577 - Linking RTVIProcessor#0 -> Pipeline#0
+2026-08-18 15:31:12.437 | DEBUG    | pipecat.processors.frame_processor:link:577 - Linking Pipeline#0 -> PipelineWorker#0::Sink
+2026-08-18 15:31:12.437 | DEBUG    | pipecat.workers.runner:add_workers:213 - WorkerRunner 'runner-a6787dac': added worker 'PipelineWorker#0'
+2026-08-18 15:31:12.438 | DEBUG    | pipecat.workers.runner:run:257 - WorkerRunner 'runner-a6787dac': started running
+2026-08-18 15:31:12.443 | DEBUG    | pipecat.workers.runner:_start_worker:413 - WorkerRunner 'runner-a6787dac': starting worker 'PipelineWorker#0'
+2026-08-18 15:31:12.460 | DEBUG    | pipecat.transports.smallwebrtc.connection:on_iceconnectionstatechange:376 - ICE connection state is checking, connection is connecting
+2026-08-18 15:31:12.480 | DEBUG    | pipecat.transports.smallwebrtc.connection:_monitoring_connecting_state:577 - Monitoring connecting state
+2026-08-18 15:31:12.483 | DEBUG    | pipecat.transports.smallwebrtc.connection:_handle_new_connection_state:653 - Connection state changed to: connecting
+2026-08-18 15:31:12.486 | DEBUG    | pipecat.pipeline.worker:_wait_for_pipeline_start:965 - PipelineWorker#0: Starting. Waiting for StartFrame#0 to reach the end of the pipeline...
+2026-08-18 15:31:12.494 | INFO     | pipecat.transports.smallwebrtc.transport:connect:494 - Connecting to Small WebRTC
+2026-08-18 15:31:12.498 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=StartFrame
+2026-08-18 15:31:12.500 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=STTMetadataFrame
+2026-08-18 15:31:12.502 | DEBUG    | pipecat.runner.run:ice_candidate:949 - Received patch request: SmallWebRTCPatchRequest(pc_id='SmallWebRTCConnection#0-afd367a4264347e6ad2e8a3547f305a1', candidates=[IceCandidate(candidate='candidate:2995276233 1 udp 2122260223 172.31.160.1 55142 typ host generation 0 ufrag v6R5 network-id 4', sdp_mid='0', sdp_mline_index=0), IceCandidate(candidate='candidate:474521856 1 udp 2122063615 192.168.0.106 55143 typ host generation 0 ufrag v6R5 network-id 1 network-cost 10', sdp_mid='0', sdp_mline_index=0), IceCandidate(candidate='candidate:1760028805 1 udp 2122197247 2406:b400:b4:fad0:5c75:a771:21bd:d22a 55144 typ host generation 0 ufrag v6R5 network-id 2 network-cost 10', sdp_mid='0', sdp_mline_index=0), IceCandidate(candidate='candidate:2414741468 1 udp 2122131711 2406:b400:b4:fad0:609f:1681:fec8:f5e0 55145 typ host generation 0 ufrag v6R5 network-id 3 network-cost 10', sdp_mid='0', sdp_mline_index=0), IceCandidate(candidate='candidate:2995276233 1 udp 2122260223 172.31.160.1 55146 typ host generation 0 ufrag v6R5 network-id 4', sdp_mid='1', sdp_mline_index=1), IceCandidate(candidate='candidate:474521856 1 udp 2122063615 192.168.0.106 55147 typ host generation 0 ufrag v6R5 network-id 1 network-cost 10', sdp_mid='1', sdp_mline_index=1), IceCandidate(candidate='candidate:1760028805 1 udp 2122197247 2406:b400:b4:fad0:5c75:a771:21bd:d22a 55148 typ host generation 0 ufrag v6R5 network-id 2 network-cost 10', sdp_mid='1', sdp_mline_index=1), IceCandidate(candidate='candidate:2414741468 1 udp 2122131711 2406:b400:b4:fad0:609f:1681:fec8:f5e0 55149 typ host generation 0 ufrag v6R5 network-id 3 network-cost 10', sdp_mid='1', sdp_mline_index=1), IceCandidate(candidate='candidate:2995276233 1 udp 2122260223 172.31.160.1 55150 typ host generation 0 ufrag v6R5 network-id 4', sdp_mid='2', sdp_mline_index=2), IceCandidate(candidate='candidate:474521856 1 udp 2122063615 192.168.0.106 55151 typ host generation 0 ufrag v6R5 network-id 1 network-cost 10', sdp_mid='2', sdp_mline_index=2), IceCandidate(candidate='candidate:1760028805 1 udp 2122197247 2406:b400:b4:fad0:5c75:a771:21bd:d22a 55152 typ host generation 0 ufrag v6R5 network-id 2 network-cost 10', sdp_mid='2', sdp_mline_index=2), IceCandidate(candidate='candidate:2414741468 1 udp 2122131711 2406:b400:b4:fad0:609f:1681:fec8:f5e0 55153 typ host generation 0 ufrag v6R5 network-id 3 network-cost 10', sdp_mid='2', sdp_mline_index=2), IceCandidate(candidate='candidate:2995276233 1 udp 2122260223 172.31.160.1 55154 typ host generation 0 ufrag v6R5 network-id 4', sdp_mid='3', sdp_mline_index=3), IceCandidate(candidate='candidate:474521856 1 udp 2122063615 192.168.0.106 55155 typ host generation 0 ufrag v6R5 network-id 1 network-cost 10', sdp_mid='3', sdp_mline_index=3), IceCandidate(candidate='candidate:1760028805 1 udp 2122197247 2406:b400:b4:fad0:5c75:a771:21bd:d22a 55156 typ host generation 0 ufrag v6R5 network-id 2 network-cost 10', sdp_mid='3', sdp_mline_index=3), IceCandidate(candidate='candidate:2414741468 1 udp 2122131711 2406:b400:b4:fad0:609f:1681:fec8:f5e0 55157 typ host generation 0 ufrag v6R5 network-id 3 network-cost 10', sdp_mid='3', sdp_mline_index=3), IceCandidate(candidate='candidate:1555223465 1 udp 1685855999 49.204.11.89 7415 typ srflx raddr 192.168.0.106 rport 55143 generation 0 ufrag v6R5 network-id 1 network-cost 10', sdp_mid='0', sdp_mline_index=0), IceCandidate(candidate='candidate:1555223465 1 udp 1685855999 49.204.11.89 7423 typ srflx raddr 192.168.0.106 rport 55147 generation 0 ufrag v6R5 network-id 1 network-cost 10', sdp_mid='1', sdp_mline_index=1), IceCandidate(candidate='candidate:1555223465 1 udp 1685855999 49.204.11.89 8207 typ srflx raddr 192.168.0.106 rport 55155 generation 0 ufrag v6R5 network-id 1 network-cost 10', sdp_mid='3', sdp_mline_index=3), IceCandidate(candidate='candidate:1555223465 1 udp 1685855999 49.204.11.89 7995 typ srflx raddr 192.168.0.106 rport 55151 generation 0 ufrag v6R5 network-id 1 network-cost 10', sdp_mid='2', sdp_mline_index=2), IceCandidate(candidate='candidate:3424021700 1 tcp 1518280447 172.31.160.1 9 typ host tcptype active generation 0 ufrag v6R5 network-id 4', sdp_mid='0', sdp_mline_index=0), IceCandidate(candidate='candidate:1658225677 1 tcp 1518083839 192.168.0.106 9 typ host tcptype active generation 0 ufrag v6R5 network-id 1 network-cost 10', sdp_mid='0', sdp_mline_index=0), IceCandidate(candidate='candidate:377081224 1 tcp 1518217471 2406:b400:b4:fad0:5c75:a771:21bd:d22a 9 typ host tcptype active generation 0 ufrag v6R5 network-id 2 network-cost 10', sdp_mid='0', sdp_mline_index=0), IceCandidate(candidate='candidate:4050658001 1 tcp 1518151935 2406:b400:b4:fad0:609f:1681:fec8:f5e0 9 typ host tcptype active generation 0 ufrag v6R5 network-id 3 network-cost 10', sdp_mid='0', sdp_mline_index=0), IceCandidate(candidate='candidate:3424021700 1 tcp 1518280447 172.31.160.1 9 typ host tcptype active generation 0 ufrag v6R5 network-id 4', sdp_mid='1', sdp_mline_index=1), IceCandidate(candidate='candidate:1658225677 1 tcp 1518083839 192.168.0.106 9 typ host tcptype active generation 0 ufrag v6R5 network-id 1 network-cost 10', sdp_mid='1', sdp_mline_index=1), IceCandidate(candidate='candidate:377081224 1 tcp 1518217471 2406:b400:b4:fad0:5c75:a771:21bd:d22a 9 typ host tcptype active generation 0 ufrag v6R5 network-id 2 network-cost 10', sdp_mid='1', sdp_mline_index=1), IceCandidate(candidate='candidate:4050658001 1 tcp 1518151935 2406:b400:b4:fad0:609f:1681:fec8:f5e0 9 typ host tcptype active generation 0 ufrag v6R5 network-id 3 network-cost 10', sdp_mid='1', sdp_mline_index=1), IceCandidate(candidate='candidate:3424021700 1 tcp 1518280447 172.31.160.1 9 typ host tcptype active generation 0 ufrag v6R5 network-id 4', sdp_mid='2', sdp_mline_index=2), IceCandidate(candidate='candidate:1658225677 1 tcp 1518083839 192.168.0.106 9 typ host tcptype active generation 0 ufrag v6R5 network-id 1 network-cost 10', sdp_mid='2', sdp_mline_index=2), IceCandidate(candidate='candidate:377081224 1 tcp 1518217471 2406:b400:b4:fad0:5c75:a771:21bd:d22a 9 typ host tcptype active generation 0 ufrag v6R5 network-id 2 network-cost 10', sdp_mid='2', sdp_mline_index=2), IceCandidate(candidate='candidate:4050658001 1 tcp 1518151935 2406:b400:b4:fad0:609f:1681:fec8:f5e0 9 typ host tcptype active generation 0 ufrag v6R5 network-id 3 network-cost 10', sdp_mid='2', sdp_mline_index=2), IceCandidate(candidate='candidate:3424021700 1 tcp 1518280447 172.31.160.1 9 typ host tcptype active generation 0 ufrag v6R5 network-id 4', sdp_mid='3', sdp_mline_index=3), IceCandidate(candidate='candidate:1658225677 1 tcp 1518083839 192.168.0.106 9 typ host tcptype active generation 0 ufrag v6R5 network-id 1 network-cost 10', sdp_mid='3', sdp_mline_index=3), IceCandidate(candidate='candidate:377081224 1 tcp 1518217471 2406:b400:b4:fad0:5c75:a771:21bd:d22a 9 typ host tcptype active generation 0 ufrag v6R5 network-id 2 network-cost 10', sdp_mid='3', sdp_mline_index=3), IceCandidate(candidate='candidate:4050658001 1 tcp 1518151935 2406:b400:b4:fad0:609f:1681:fec8:f5e0 9 typ host tcptype active generation 0 ufrag v6R5 network-id 3 network-cost 10', sdp_mid='3', sdp_mline_index=3)])
+2026-08-18 15:31:12.502 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:2995276233', ip='172.31.160.1', port=55142, priority=2122260223, protocol='udp', type='host', relatedAddress=None, relatedPort=None, sdpMid='0', sdpMLineIndex=0, tcpType=None)
+2026-08-18 15:31:12.502 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:474521856', ip='192.168.0.106', port=55143, priority=2122063615, protocol='udp', type='host', relatedAddress=None, relatedPort=None, sdpMid='0', sdpMLineIndex=0, tcpType=None)
+2026-08-18 15:31:12.504 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:1760028805', ip='2406:b400:b4:fad0:5c75:a771:21bd:d22a', port=55144, priority=2122197247, protocol='udp', type='host', relatedAddress=None, relatedPort=None, sdpMid='0', sdpMLineIndex=0, tcpType=None)
+2026-08-18 15:31:12.506 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:2414741468', ip='2406:b400:b4:fad0:609f:1681:fec8:f5e0', port=55145, priority=2122131711, protocol='udp', type='host', relatedAddress=None, relatedPort=None, sdpMid='0', sdpMLineIndex=0, tcpType=None)
+2026-08-18 15:31:12.545 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:2995276233', ip='172.31.160.1', port=55146, priority=2122260223, protocol='udp', type='host', relatedAddress=None, relatedPort=None, sdpMid='1', sdpMLineIndex=1, tcpType=None)
+2026-08-18 15:31:12.546 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:474521856', ip='192.168.0.106', port=55147, priority=2122063615, protocol='udp', type='host', relatedAddress=None, relatedPort=None, sdpMid='1', sdpMLineIndex=1, tcpType=None)
+2026-08-18 15:31:12.548 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:1760028805', ip='2406:b400:b4:fad0:5c75:a771:21bd:d22a', port=55148, priority=2122197247, protocol='udp', type='host', relatedAddress=None, relatedPort=None, sdpMid='1', sdpMLineIndex=1, tcpType=None)
+2026-08-18 15:31:12.550 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:2414741468', ip='2406:b400:b4:fad0:609f:1681:fec8:f5e0', port=55149, priority=2122131711, protocol='udp', type='host', relatedAddress=None, relatedPort=None, sdpMid='1', sdpMLineIndex=1, tcpType=None)
+2026-08-18 15:31:12.552 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:2995276233', ip='172.31.160.1', port=55150, priority=2122260223, protocol='udp', type='host', relatedAddress=None, relatedPort=None, sdpMid='2', sdpMLineIndex=2, tcpType=None)
+2026-08-18 15:31:12.554 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:474521856', ip='192.168.0.106', port=55151, priority=2122063615, protocol='udp', type='host', relatedAddress=None, relatedPort=None, sdpMid='2', sdpMLineIndex=2, tcpType=None)
+2026-08-18 15:31:12.554 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:1760028805', ip='2406:b400:b4:fad0:5c75:a771:21bd:d22a', port=55152, priority=2122197247, protocol='udp', type='host', relatedAddress=None, relatedPort=None, sdpMid='2', sdpMLineIndex=2, tcpType=None)
+2026-08-18 15:31:12.555 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:2414741468', ip='2406:b400:b4:fad0:609f:1681:fec8:f5e0', port=55153, priority=2122131711, protocol='udp', type='host', relatedAddress=None, relatedPort=None, sdpMid='2', sdpMLineIndex=2, tcpType=None)
+2026-08-18 15:31:12.559 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:2995276233', ip='172.31.160.1', port=55154, priority=2122260223, protocol='udp', type='host', relatedAddress=None, relatedPort=None, sdpMid='3', sdpMLineIndex=3, tcpType=None)
+2026-08-18 15:31:12.562 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:474521856', ip='192.168.0.106', port=55155, priority=2122063615, protocol='udp', type='host', relatedAddress=None, relatedPort=None, sdpMid='3', sdpMLineIndex=3, tcpType=None)
+2026-08-18 15:31:12.563 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:1760028805', ip='2406:b400:b4:fad0:5c75:a771:21bd:d22a', port=55156, priority=2122197247, protocol='udp', type='host', relatedAddress=None, relatedPort=None, sdpMid='3', sdpMLineIndex=3, tcpType=None)
+2026-08-18 15:31:12.563 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:2414741468', ip='2406:b400:b4:fad0:609f:1681:fec8:f5e0', port=55157, priority=2122131711, protocol='udp', type='host', relatedAddress=None, relatedPort=None, sdpMid='3', sdpMLineIndex=3, tcpType=None)
+2026-08-18 15:31:12.564 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:1555223465', ip='49.204.11.89', port=7415, priority=1685855999, protocol='udp', type='srflx', relatedAddress='192.168.0.106', relatedPort=55143, sdpMid='0', sdpMLineIndex=0, tcpType=None)
+2026-08-18 15:31:12.565 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:1555223465', ip='49.204.11.89', port=7423, priority=1685855999, protocol='udp', type='srflx', relatedAddress='192.168.0.106', relatedPort=55147, sdpMid='1', sdpMLineIndex=1, tcpType=None)
+2026-08-18 15:31:12.566 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:1555223465', ip='49.204.11.89', port=8207, priority=1685855999, protocol='udp', type='srflx', relatedAddress='192.168.0.106', relatedPort=55155, sdpMid='3', sdpMLineIndex=3, tcpType=None)
+2026-08-18 15:31:12.566 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:1555223465', ip='49.204.11.89', port=7995, priority=1685855999, protocol='udp', type='srflx', relatedAddress='192.168.0.106', relatedPort=55151, sdpMid='2', sdpMLineIndex=2, tcpType=None)
+2026-08-18 15:31:12.566 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:3424021700', ip='172.31.160.1', port=9, priority=1518280447, protocol='tcp', type='host', relatedAddress=None, relatedPort=None, sdpMid='0', sdpMLineIndex=0, tcpType='active')
+2026-08-18 15:31:12.567 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:1658225677', ip='192.168.0.106', port=9, priority=1518083839, protocol='tcp', type='host', relatedAddress=None, relatedPort=None, sdpMid='0', sdpMLineIndex=0, tcpType='active')
+2026-08-18 15:31:12.569 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:377081224', ip='2406:b400:b4:fad0:5c75:a771:21bd:d22a', port=9, priority=1518217471, protocol='tcp', type='host', relatedAddress=None, relatedPort=None, sdpMid='0', sdpMLineIndex=0, tcpType='active')
+2026-08-18 15:31:12.570 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:4050658001', ip='2406:b400:b4:fad0:609f:1681:fec8:f5e0', port=9, priority=1518151935, protocol='tcp', type='host', relatedAddress=None, relatedPort=None, sdpMid='0', sdpMLineIndex=0, tcpType='active')
+2026-08-18 15:31:12.570 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:3424021700', ip='172.31.160.1', port=9, priority=1518280447, protocol='tcp', type='host', relatedAddress=None, relatedPort=None, sdpMid='1', sdpMLineIndex=1, tcpType='active')
+2026-08-18 15:31:12.574 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:1658225677', ip='192.168.0.106', port=9, priority=1518083839, protocol='tcp', type='host', relatedAddress=None, relatedPort=None, sdpMid='1', sdpMLineIndex=1, tcpType='active')
+2026-08-18 15:31:12.575 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:377081224', ip='2406:b400:b4:fad0:5c75:a771:21bd:d22a', port=9, priority=1518217471, protocol='tcp', type='host', relatedAddress=None, relatedPort=None, sdpMid='1', sdpMLineIndex=1, tcpType='active')
+2026-08-18 15:31:12.577 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:4050658001', ip='2406:b400:b4:fad0:609f:1681:fec8:f5e0', port=9, priority=1518151935, protocol='tcp', type='host', relatedAddress=None, relatedPort=None, sdpMid='1', sdpMLineIndex=1, tcpType='active')
+2026-08-18 15:31:12.577 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:3424021700', ip='172.31.160.1', port=9, priority=1518280447, protocol='tcp', type='host', relatedAddress=None, relatedPort=None, sdpMid='2', sdpMLineIndex=2, tcpType='active')
+2026-08-18 15:31:12.578 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:1658225677', ip='192.168.0.106', port=9, priority=1518083839, protocol='tcp', type='host', relatedAddress=None, relatedPort=None, sdpMid='2', sdpMLineIndex=2, tcpType='active')
+2026-08-18 15:31:12.578 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:377081224', ip='2406:b400:b4:fad0:5c75:a771:21bd:d22a', port=9, priority=1518217471, protocol='tcp', type='host', relatedAddress=None, relatedPort=None, sdpMid='2', sdpMLineIndex=2, tcpType='active')
+2026-08-18 15:31:12.578 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:4050658001', ip='2406:b400:b4:fad0:609f:1681:fec8:f5e0', port=9, priority=1518151935, protocol='tcp', type='host', relatedAddress=None, relatedPort=None, sdpMid='2', sdpMLineIndex=2, tcpType='active')
+2026-08-18 15:31:12.579 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:3424021700', ip='172.31.160.1', port=9, priority=1518280447, protocol='tcp', type='host', relatedAddress=None, relatedPort=None, sdpMid='3', sdpMLineIndex=3, tcpType='active')
+2026-08-18 15:31:12.580 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:1658225677', ip='192.168.0.106', port=9, priority=1518083839, protocol='tcp', type='host', relatedAddress=None, relatedPort=None, sdpMid='3', sdpMLineIndex=3, tcpType='active')
+2026-08-18 15:31:12.580 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:377081224', ip='2406:b400:b4:fad0:5c75:a771:21bd:d22a', port=9, priority=1518217471, protocol='tcp', type='host', relatedAddress=None, relatedPort=None, sdpMid='3', sdpMLineIndex=3, tcpType='active')
+2026-08-18 15:31:12.580 | DEBUG    | pipecat.transports.smallwebrtc.connection:add_ice_candidate:818 - Adding remote candidate: RTCIceCandidate(component=1, foundation='candidate:4050658001', ip='2406:b400:b4:fad0:609f:1681:fec8:f5e0', port=9, priority=1518151935, protocol='tcp', type='host', relatedAddress=None, relatedPort=None, sdpMid='3', sdpMLineIndex=3, tcpType='active')
+INFO:     ::1:63234 - "PATCH /sessions/bfee6238-1c28-4eb4-9e3e-23349c39fb52/api/offer HTTP/1.1" 200 OK
+2026-08-18 15:31:12.584 | INFO     | pipecat.transports.smallwebrtc.transport:connect:494 - Connecting to Small WebRTC
+2026-08-18 15:31:12.587 | DEBUG    | pipecat.registry.registry:register:132 - Worker 'PipelineWorker#0' ready (local)
+2026-08-18 15:31:12.587 | DEBUG    | pipecat.workers.runner:_send_registry:465 - WorkerRunner 'runner-a6787dac': broadcasting registry: ['PipelineWorker#0']
+2026-08-18 15:31:12.587 | DEBUG    | pipecat.workers.base_worker:_maybe_activate:1078 - Worker 'PipelineWorker#0': activated
+2026-08-18 15:31:12.590 | DEBUG    | pipecat.pipeline.worker:_wait_for_pipeline_start:968 - PipelineWorker#0: StartFrame#0 reached the end of the pipeline, pipeline is now ready.
+2026-08-18 15:31:12.611 | DEBUG    | pipecat.transports.smallwebrtc.connection:on_iceconnectionstatechange:376 - ICE connection state is completed, connection is connecting
+2026-08-18 15:31:12.613 | INFO     | pipecat.transports.smallwebrtc.request_handler:handle_web_request:200 - Reusing existing connection for pc_id: SmallWebRTCConnection#0-afd367a4264347e6ad2e8a3547f305a1
+2026-08-18 15:31:12.614 | DEBUG    | pipecat.transports.smallwebrtc.connection:renegotiate:450 - Renegotiating SmallWebRTCConnection#0-afd367a4264347e6ad2e8a3547f305a1
+2026-08-18 15:31:12.628 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=OutputTransportReadyFrame
+2026-08-18 15:31:12.634 | DEBUG    | pipecat.transports.smallwebrtc.connection:send_app_message:768 - Data channel not ready, queuing message
+2026-08-18 15:31:12.636 | DEBUG    | pipecat.transports.smallwebrtc.connection:_cancel_monitoring_connecting_state:597 - Cancelling the connecting timeout task
+2026-08-18 15:31:12.636 | DEBUG    | pipecat.transports.smallwebrtc.connection:_handle_new_connection_state:653 - Connection state changed to: connected
+2026-08-18 15:31:12.641 | DEBUG    | pipecat.transports.smallwebrtc.transport:on_connected:247 - Peer connection established.
+2026-08-18 15:31:12.642 | DEBUG    | pipecat.transports.smallwebrtc.connection:replace_audio_track:492 - Replacing audio track audio
+2026-08-18 15:31:12.642 | DEBUG    | pipecat.transports.smallwebrtc.connection:_create_answer:404 - Creating answer
+2026-08-18 15:31:12.646 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=ClientConnectedFrame
+2026-08-18 15:31:12.651 | DEBUG    | pipecat.transports.smallwebrtc.connection:_create_answer:407 - Setting the answer after the local description is created
+INFO:     ::1:63234 - "POST /sessions/bfee6238-1c28-4eb4-9e3e-23349c39fb52/api/offer HTTP/1.1" 200 OK
+2026-08-18 15:31:12.654 | DEBUG    | pipecat.transports.smallwebrtc.connection:_cancel_data_channel_timeout:635 - Cancelling the data channel timeout task
+2026-08-18 15:31:12.655 | DEBUG    | pipecat.transports.smallwebrtc.connection:_flush_message_queue:788 - Data channel is open, flushing queued messages
+2026-08-18 15:31:12.668 | DEBUG    | pipecat.transports.smallwebrtc.connection:_handle_signalling_message:805 - Signalling message received: {'type': 'trackStatus', 'receiver_index': 0, 'enabled': True}
+2026-08-18 15:31:12.671 | DEBUG    | pipecat.transports.smallwebrtc.connection:_handle_signalling_message:805 - Signalling message received: {'type': 'trackStatus', 'receiver_index': 1, 'enabled': False}
+2026-08-18 15:31:12.671 | DEBUG    | pipecat.transports.smallwebrtc.connection:_handle_signalling_message:805 - Signalling message received: {'type': 'trackStatus', 'receiver_index': 2, 'enabled': False}
+2026-08-18 15:31:12.675 | DEBUG    | pipecat.processors.frameworks.rtvi.processor:_handle_client_ready:386 - Received client-ready: version 2.1.0
+2026-08-18 15:31:12.688 | DEBUG    | pipecat.processors.frameworks.rtvi.processor:_handle_client_ready:423 - Client Details: library='@pipecat-ai/client-react' library_version='1.8.1' platform='Windows' platform_version='NT 10.0' platform_details={'browser': 'Chrome', 'browser_version': '151.0.0.0', 'platform_type': 'desktop', 'engine': 'Blink'}
+2026-08-18 15:31:12.690 | DEBUG    | pipecat.processors.frameworks.rtvi.processor:set_client_ready:130 - RTVIProcessor#0: client is ready
+2026-08-18 15:32:24.816 | DEBUG    | pipecat.processors.frame_processor:broadcast_interruption:753 - RTVIProcessor#0: broadcasting interruption
+2026-08-18 15:32:24.827 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=InterruptionFrame
+2026-08-18 15:32:24.832 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=PipelineFlushFrame
+2026-08-18 15:32:24.845 | DEBUG    | pipecat.pipeline.worker:_sink_push_frame:1175 - PipelineWorker#0: flush probe reached sink — bouncing upstream
+2026-08-18 15:32:24.854 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=PipelineFlushFrame
+2026-08-18 15:32:24.855 | DEBUG    | pipecat.pipeline.worker:_source_push_frame:1127 - PipelineWorker#0: flush probe reached source — pipeline drained
+2026-08-18 15:32:24.861 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=LLMMessagesAppendFrame
+2026-08-18 15:32:24.861 | INFO     | voice.processors.runtime_responder:_emit_reply:38 - [voice→runtime] transcript='Hey'
+{"timestamp": "2026-08-18T10:02:24.863397Z", "level": "INFO", "message": "Hey", "logger": "d2c_agent", "event": "request_received", "request_id": "41ef065e-2585-431f-aa72-1ebfd85e8126", "node": null, "via": "handle", "customer_id": "voice_demo_1787047272"}
+INFO:d2c_agent:request_received
+D:\D2C\voice\bot.py:36: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+  return cfg.dict() if hasattr(cfg, "dict") else cfg
+{"timestamp": "2026-08-18T10:02:25.116193Z", "level": "INFO", "message": "request_received", "logger": "d2c_agent", "event": "request_received", "request_id": "41ef065e-2585-431f-aa72-1ebfd85e8126", "node": null, "via": "invoke_agent", "customer_id": "voice_demo_1787047272", "message_preview": "Hey"}
+INFO:d2c_agent:request_received
+{"timestamp": "2026-08-18T10:02:25.549610Z", "level": "INFO", "message": "supervisor_started", "logger": "d2c_agent", "event": "supervisor_started", "request_id": "41ef065e-2585-431f-aa72-1ebfd85e8126", "node": "supervisor"}
+INFO:d2c_agent:supervisor_started
+{"timestamp": "2026-08-18T10:02:25.553146Z", "level": "INFO", "message": "rag_prefetch_started", "logger": "d2c_agent", "event": "rag_prefetch_started", "request_id": "41ef065e-2585-431f-aa72-1ebfd85e8126", "node": "rag_prefetch"}
+INFO:d2c_agent:rag_prefetch_started
+{"timestamp": "2026-08-18T10:02:26.651475Z", "level": "INFO", "message": "supervisor_completed", "logger": "d2c_agent", "event": "supervisor_completed", "request_id": "41ef065e-2585-431f-aa72-1ebfd85e8126", "node": "supervisor", "intent": "general", "risk": "low"}
+INFO:d2c_agent:supervisor_completed
+BM25 index loaded with 207 documents
+
+Advanced RAG Query: Hey
+Hybrid search: True | Rerank: True
+Dense results: 9
+Sparse results: 9
+Used Reciprocal Rank Fusion
+Reranking 8 candidates
+Final documents: 3
+  [1] Zepto Terms of Use, Page 0, Clause 1.4 | 1.4  Last updated: 1 st November 2025  This document is an electronic record and...
+  [2] Zepto Terms of Use, Page 0, Clause 1.2 | 1.2. These terms of use (“Terms”) govern your use of the Platform, and for the p...
+  [3] Zepto Terms of Use, Page 1, Clause 1.3 | 1.3. Please read these Terms carefully before You use the Platform. If You do no...
+{"timestamp": "2026-08-18T10:02:36.415513Z", "level": "INFO", "message": "rag_prefetch_completed", "logger": "d2c_agent", "event": "rag_prefetch_completed", "request_id": "41ef065e-2585-431f-aa72-1ebfd85e8126", "node": "rag_prefetch", "docs": 3}
+INFO:d2c_agent:rag_prefetch_completed
+[IDENTITY] intent='' risk='low' auth='anonymous' verified=False sensitive=False amount=0.0 order_id=None
+{"timestamp": "2026-08-18T10:02:36.477746Z", "level": "INFO", "message": "planner_started", "logger": "d2c_agent", "event": "planner_started", "request_id": "41ef065e-2585-431f-aa72-1ebfd85e8126", "node": "planner"}
+INFO:d2c_agent:planner_started
+{"timestamp": "2026-08-18T10:02:39.345615Z", "level": "INFO", "message": "planner_completed", "logger": "d2c_agent", "event": "planner_completed", "request_id": "41ef065e-2585-431f-aa72-1ebfd85e8126", "node": "planner", "plan_id": "plan_zepto", "intent": "return", "steps": 1, "missing_inputs": ["photos"], "confidence": 0.85}
+INFO:d2c_agent:planner_completed
+{"timestamp": "2026-08-18T10:02:39.353238Z", "level": "INFO", "message": "executor_started", "logger": "d2c_agent", "event": "executor_started", "request_id": "41ef065e-2585-431f-aa72-1ebfd85e8126", "node": "executor", "order_id": null, "amount": 0, "missing_inputs": ["photos"], "already_executed": []}
+INFO:d2c_agent:executor_started
+
+=== Enterprise Execution Engine ===
+Order ID: None | Amount: ₹0
+Missing inputs: {'photos'}
+Already executed: set()
+Ready steps: ['shopify_get_order']
+Skipped shopify_get_order - missing order_id
+{"timestamp": "2026-08-18T10:02:39.415025Z", "level": "INFO", "message": "executor_completed", "logger": "d2c_agent", "event": "executor_completed", "request_id": "41ef065e-2585-431f-aa72-1ebfd85e8126", "node": "executor", "tools_executed": ["shopify_get_order"], "tool_statuses": {"shopify_get_order": "skipped"}, "tool_call_ids": {}, "order_id": null, "duration": 0.063}
+INFO:d2c_agent:executor_completed
+=== Execution Finished ===
+
+{"timestamp": "2026-08-18T10:02:39.455059Z", "level": "INFO", "message": "verifier_started", "logger": "d2c_agent", "event": "verifier_started", "request_id": "41ef065e-2585-431f-aa72-1ebfd85e8126", "node": "verifier"}
+INFO:d2c_agent:verifier_started
+{"timestamp": "2026-08-18T10:02:39.456059Z", "level": "INFO", "message": "verifier_soft_issue", "logger": "d2c_agent", "event": "verifier_soft_issue", "request_id": "41ef065e-2585-431f-aa72-1ebfd85e8126", "node": "verifier", "soft_issues": ["shopify_get_order: Missing required input: order_id", "photos"]}
+INFO:d2c_agent:verifier_soft_issue
+{"timestamp": "2026-08-18T10:02:39.463074Z", "level": "INFO", "message": "hitl_started", "logger": "d2c_agent", "event": "hitl_started", "request_id": "41ef065e-2585-431f-aa72-1ebfd85e8126", "node": "hitl"}
+INFO:d2c_agent:hitl_started
+{"timestamp": "2026-08-18T10:02:39.463074Z", "level": "INFO", "message": "hitl_completed", "logger": "d2c_agent", "event": "hitl_completed", "request_id": "41ef065e-2585-431f-aa72-1ebfd85e8126", "node": "hitl", "needs_escalation": false, "reason": "", "amount": 0, "risk_level": "low"}
+INFO:d2c_agent:hitl_completed
+{"timestamp": "2026-08-18T10:02:39.475601Z", "level": "INFO", "message": "qa_started", "logger": "d2c_agent", "event": "qa_started", "request_id": "41ef065e-2585-431f-aa72-1ebfd85e8126", "node": "qa"}
+INFO:d2c_agent:qa_started
+{"timestamp": "2026-08-18T10:02:39.476601Z", "level": "INFO", "message": "qa_using_prefetched_docs", "logger": "d2c_agent", "event": "qa_using_prefetched_docs", "request_id": "41ef065e-2585-431f-aa72-1ebfd85e8126", "node": "qa", "docs": 3}
+INFO:d2c_agent:qa_using_prefetched_docs
+{"timestamp": "2026-08-18T10:02:41.773608Z", "level": "INFO", "message": "qa_completed", "logger": "d2c_agent", "event": "qa_completed", "request_id": "41ef065e-2585-431f-aa72-1ebfd85e8126", "node": "qa", "docs_retrieved": 3, "used_prefetch": true, "citations": ["Zepto Terms of Use, Page 0, Clause 1.4", "Zepto Terms of Use, Page 0, Clause 1.2", "Zepto Terms of Use, Page 1, Clause 1.3"], "missing_inputs": ["photos"], "missing_photos": true, "active_order_id": null, "auth_level": "anonymous", "needs_identity": false, "case_status": "open", "needs_escalation": false, "duration": 2.298}
+INFO:d2c_agent:qa_completed
+{"timestamp": "2026-08-18T10:02:41.776609Z", "level": "INFO", "message": "response_ready", "logger": "d2c_agent", "event": "response_ready", "request_id": "41ef065e-2585-431f-aa72-1ebfd85e8126", "node": null, "via": "invoke_agent", "escalated": false, "blocked": false, "intent": "return", "identity_blocked": false}
+INFO:d2c_agent:response_ready
+{"timestamp": "2026-08-18T10:02:41.842200Z", "level": "INFO", "message": "response_ready", "logger": "d2c_agent", "event": "response_ready", "request_id": "41ef065e-2585-431f-aa72-1ebfd85e8126", "node": null, "via": "handle", "escalated": false, "blocked": false, "intent": "return", "latency_ms": 16951.72}
+INFO:d2c_agent:response_ready
+2026-08-18 15:32:41.845 | INFO     | voice.processors.runtime_responder:_emit_reply:45 - [runtime→voice] reply='Hello,\n\nThank you for reaching out. To proceed with your return or refund, we require clear photos of the damaged product. Please upload the photos at your earliest convenience.\n\nIf you have an order '
+2026-08-18 15:32:41.974 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_text_aggregation_metrics:298 - OpenAITTSService#0 text aggregation time: 0.12680935859680176
+2026-08-18 15:32:41.980 | DEBUG    | pipecat.services.tts_service:_push_tts_frames:1271 - OpenAITTSService#0: Generating TTS [Hello,
+
+Thank you for reaching out.]
+2026-08-18 15:32:43.419 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:133 - OpenAITTSService#0 TTFB: 1.439s
+2026-08-18 15:32:43.426 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:process_ttfa_metrics:182 - OpenAITTSService#0 TTFA: 1.465s (0.026s leading silence)
+2026-08-18 15:32:43.430 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:691 - Bot started speaking
+2026-08-18 15:32:43.437 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotStartedSpeakingFrame
+2026-08-18 15:32:43.443 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:43.668 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:43.900 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:43.910 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:221 - OpenAITTSService#0 processing time: 1.931s
+2026-08-18 15:32:43.913 | DEBUG    | pipecat.services.tts_service:_push_tts_frames:1271 - OpenAITTSService#0: Generating TTS [To proceed with your return or refund, we require clear photos of the damaged product.]
+2026-08-18 15:32:44.106 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:44.308 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:44.539 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:44.746 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:44.947 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:45.184 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:45.385 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:45.587 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:45.826 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:46.025 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:46.164 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:221 - OpenAITTSService#0 processing time: 2.251s
+2026-08-18 15:32:46.166 | DEBUG    | pipecat.services.tts_service:_push_tts_frames:1271 - OpenAITTSService#0: Generating TTS [Please upload the photos at your earliest convenience.]
+2026-08-18 15:32:46.266 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:46.467 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:46.683 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:46.906 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:47.146 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:47.384 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:47.585 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:47.787 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:47.986 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:48.187 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:48.426 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:48.683 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:48.904 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:49.105 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:49.306 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:49.426 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:221 - OpenAITTSService#0 processing time: 3.259s
+2026-08-18 15:32:49.429 | DEBUG    | pipecat.services.tts_service:_push_tts_frames:1271 - OpenAITTSService#0: Generating TTS [If you have an order ID, please include it as well.]
+2026-08-18 15:32:49.548 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:49.786 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:50.026 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:50.267 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:50.505 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:50.706 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:50.946 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:51.185 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:51.352 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:221 - OpenAITTSService#0 processing time: 1.923s
+2026-08-18 15:32:51.354 | DEBUG    | pipecat.services.tts_service:_push_tts_frames:1271 - OpenAITTSService#0: Generating TTS [Thank you for your cooperation.]
+2026-08-18 15:32:51.426 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:51.625 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:51.832 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:52.113 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:52.348 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:52.586 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:52.650 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:221 - OpenAITTSService#0 processing time: 1.296s
+2026-08-18 15:32:52.656 | DEBUG    | pipecat.services.tts_service:_push_tts_frames:1271 - OpenAITTSService#0: Generating TTS [Best regards,  
+Zepto Customer Support]
+2026-08-18 15:32:52.787 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:53.025 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:53.358 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:53.471 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:53.684 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:53.909 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:54.123 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:54.232 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:221 - OpenAITTSService#0 processing time: 1.576s
+2026-08-18 15:32:54.253 | DEBUG    | pipecat.services.tts_service:push_frame:898 - OpenAITTSService#0 cleaning up TTS context ca5191fa-0fe6-4640-b24b-8607514e27b6
+2026-08-18 15:32:54.347 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:54.585 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:54.826 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:55.033 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:55.265 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:55.466 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:55.706 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:55.946 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:56.186 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:56.426 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:56.683 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:56.902 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:57.104 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:57.307 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:57.548 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:57.788 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:58.028 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:58.228 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:58.465 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:58.683 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:58.907 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:59.147 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:59.388 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:59.626 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:32:59.829 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:00.067 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:00.267 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:00.467 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:00.683 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:00.908 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:01.144 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:01.349 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:01.597 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:01.824 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:02.027 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:02.264 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:02.468 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:02.683 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:02.905 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:03.143 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:03.349 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:03.548 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:03.786 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:04.025 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:04.268 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:04.505 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:04.706 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:04.944 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:05.145 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:05.346 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:05.549 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:05.784 | DEBUG    | pipecat.transports.base_output:_handle_frame:809 - Bot stopped speaking based on TTSStoppedFrame
+2026-08-18 15:33:05.784 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:743 - Bot stopped speaking
+2026-08-18 15:33:05.785 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotStoppedSpeakingFrame
+2026-08-18 15:33:12.678 | DEBUG    | pipecat.processors.frame_processor:broadcast_interruption:753 - RTVIProcessor#0: broadcasting interruption
+2026-08-18 15:33:12.686 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=InterruptionFrame
+2026-08-18 15:33:12.689 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=PipelineFlushFrame
+2026-08-18 15:33:12.695 | DEBUG    | pipecat.pipeline.worker:_sink_push_frame:1175 - PipelineWorker#0: flush probe reached sink — bouncing upstream
+2026-08-18 15:33:12.697 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=PipelineFlushFrame
+2026-08-18 15:33:12.702 | DEBUG    | pipecat.pipeline.worker:_source_push_frame:1127 - PipelineWorker#0: flush probe reached source — pipeline drained
+2026-08-18 15:33:12.704 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=LLMMessagesAppendFrame
+2026-08-18 15:33:12.709 | INFO     | voice.processors.runtime_responder:_emit_reply:38 - [voice→runtime] transcript='How you know i want return or refund only ?'
+{"timestamp": "2026-08-18T10:03:12.710229Z", "level": "INFO", "message": "How you know i want return or refund only ?", "logger": "d2c_agent", "event": "request_received", "request_id": "0f717b99-88b7-448f-ab33-de171e830e2f", "node": null, "via": "handle", "customer_id": "voice_demo_1787047272"}
+INFO:d2c_agent:request_received
+D:\D2C\voice\bot.py:36: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+  return cfg.dict() if hasattr(cfg, "dict") else cfg
+{"timestamp": "2026-08-18T10:03:12.740724Z", "level": "INFO", "message": "request_received", "logger": "d2c_agent", "event": "request_received", "request_id": "0f717b99-88b7-448f-ab33-de171e830e2f", "node": null, "via": "invoke_agent", "customer_id": "voice_demo_1787047272", "message_preview": "How you know i want return or refund only ?"}
+INFO:d2c_agent:request_received
+{"timestamp": "2026-08-18T10:03:12.759057Z", "level": "INFO", "message": "supervisor_started", "logger": "d2c_agent", "event": "supervisor_started", "request_id": "0f717b99-88b7-448f-ab33-de171e830e2f", "node": "supervisor"}
+INFO:d2c_agent:supervisor_started
+{"timestamp": "2026-08-18T10:03:12.761631Z", "level": "INFO", "message": "rag_prefetch_started", "logger": "d2c_agent", "event": "rag_prefetch_started", "request_id": "0f717b99-88b7-448f-ab33-de171e830e2f", "node": "rag_prefetch"}
+INFO:d2c_agent:rag_prefetch_started
+
+Advanced RAG Query: How you know i want return or refund only ?
+Hybrid search: True | Rerank: True
+{"timestamp": "2026-08-18T10:03:14.037704Z", "level": "INFO", "message": "supervisor_completed", "logger": "d2c_agent", "event": "supervisor_completed", "request_id": "0f717b99-88b7-448f-ab33-de171e830e2f", "node": "supervisor", "intent": "return|refund", "risk": "low"}
+INFO:d2c_agent:supervisor_completed
+Dense results: 9
+Sparse results: 9
+Used Reciprocal Rank Fusion
+Reranking 8 candidates
+Final documents: 3
+  [1] Zepto Terms of Use, Page 15, Clause 8.3 | 8.3. Refunds: Please be informed that when You opt to return the Products, upon ...
+  [2] Zepto Terms of Use, Page 16.0, Clause 8.3 | any   payment   already   made,   as   early   as   practically   possible.   8....
+  [3] Zepto Terms of Use, Page 14, Clause 8.1.3 | 8.1.3. You may request exchange or return of the eligible Products, purchased fr...
+{"timestamp": "2026-08-18T10:03:15.921677Z", "level": "INFO", "message": "rag_prefetch_completed", "logger": "d2c_agent", "event": "rag_prefetch_completed", "request_id": "0f717b99-88b7-448f-ab33-de171e830e2f", "node": "rag_prefetch", "docs": 3}
+INFO:d2c_agent:rag_prefetch_completed
+[IDENTITY] intent='' risk='low' auth='anonymous' verified=False sensitive=True amount=0.0 order_id=None
+[IDENTITY] blocked: identified required
+{"timestamp": "2026-08-18T10:03:15.933191Z", "level": "INFO", "message": "qa_started", "logger": "d2c_agent", "event": "qa_started", "request_id": "0f717b99-88b7-448f-ab33-de171e830e2f", "node": "qa"}
+INFO:d2c_agent:qa_started
+{"timestamp": "2026-08-18T10:03:15.937721Z", "level": "INFO", "message": "qa_using_prefetched_docs", "logger": "d2c_agent", "event": "qa_using_prefetched_docs", "request_id": "0f717b99-88b7-448f-ab33-de171e830e2f", "node": "qa", "docs": 3}
+INFO:d2c_agent:qa_using_prefetched_docs
+{"timestamp": "2026-08-18T10:03:17.349556Z", "level": "INFO", "message": "qa_completed", "logger": "d2c_agent", "event": "qa_completed", "request_id": "0f717b99-88b7-448f-ab33-de171e830e2f", "node": "qa", "docs_retrieved": 3, "used_prefetch": true, "citations": ["Zepto Terms of Use, Page 15, Clause 8.3", "Zepto Terms of Use, Page 16.0, Clause 8.3", "Zepto Terms of Use, Page 14, Clause 8.1.3"], "missing_inputs": [], "missing_photos": false, "active_order_id": null, "auth_level": "anonymous", "needs_identity": true, "case_status": "open", "needs_escalation": false, "duration": 1.416}
+INFO:d2c_agent:qa_completed
+{"timestamp": "2026-08-18T10:03:17.356795Z", "level": "INFO", "message": "response_ready", "logger": "d2c_agent", "event": "response_ready", "request_id": "0f717b99-88b7-448f-ab33-de171e830e2f", "node": null, "via": "invoke_agent", "escalated": false, "blocked": false, "intent": null, "identity_blocked": false}
+INFO:d2c_agent:response_ready
+{"timestamp": "2026-08-18T10:03:17.396626Z", "level": "INFO", "message": "response_ready", "logger": "d2c_agent", "event": "response_ready", "request_id": "0f717b99-88b7-448f-ab33-de171e830e2f", "node": null, "via": "handle", "escalated": false, "blocked": false, "intent": null, "latency_ms": 4676.67}
+INFO:d2c_agent:response_ready
+2026-08-18 15:33:17.396 | INFO     | voice.processors.runtime_responder:_emit_reply:45 - [runtime→voice] reply='To assist you effectively, I need to verify your order ownership. Please provide your Order ID and the phone number or email address associated with the order. This will help us securely match your re'
+2026-08-18 15:33:17.399 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_text_aggregation_metrics:298 - OpenAITTSService#0 text aggregation time: 0.0
+2026-08-18 15:33:17.399 | DEBUG    | pipecat.services.tts_service:_push_tts_frames:1271 - OpenAITTSService#0: Generating TTS [To assist you effectively, I need to verify your order ownership.]
+2026-08-18 15:33:19.029 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:133 - OpenAITTSService#0 TTFB: 1.629s
+2026-08-18 15:33:19.034 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:process_ttfa_metrics:182 - OpenAITTSService#0 TTFA: 1.680s (0.051s leading silence)
+2026-08-18 15:33:19.049 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:691 - Bot started speaking
+2026-08-18 15:33:19.055 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotStartedSpeakingFrame
+2026-08-18 15:33:19.057 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:19.259 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:19.465 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:19.518 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:221 - OpenAITTSService#0 processing time: 2.119s
+2026-08-18 15:33:19.519 | DEBUG    | pipecat.services.tts_service:_push_tts_frames:1271 - OpenAITTSService#0: Generating TTS [Please provide your Order ID and the phone number or email address associated with the order.]
+2026-08-18 15:33:19.684 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:19.907 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:20.106 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:20.345 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:20.587 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:20.824 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:21.025 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:21.226 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:21.427 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:21.499 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:221 - OpenAITTSService#0 processing time: 1.980s
+2026-08-18 15:33:21.500 | DEBUG    | pipecat.services.tts_service:_push_tts_frames:1271 - OpenAITTSService#0: Generating TTS [This will help us securely match your request to your account.]
+2026-08-18 15:33:21.627 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:21.867 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:22.070 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:22.307 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:22.549 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:22.784 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:22.986 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:23.228 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:23.466 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:23.684 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:23.906 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:24.145 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:24.210 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:221 - OpenAITTSService#0 processing time: 2.709s
+2026-08-18 15:33:24.210 | DEBUG    | pipecat.services.tts_service:_push_tts_frames:1271 - OpenAITTSService#0: Generating TTS [Thank you for your understanding.]
+2026-08-18 15:33:24.388 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:24.625 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:24.825 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:25.065 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:25.268 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:25.484 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:25.703 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:25.944 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:26.147 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:26.384 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:26.496 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:221 - OpenAITTSService#0 processing time: 2.287s
+2026-08-18 15:33:26.498 | DEBUG    | pipecat.services.tts_service:push_frame:898 - OpenAITTSService#0 cleaning up TTS context 81298eef-e384-4b05-abb1-3eca6999e736
+2026-08-18 15:33:26.588 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:26.788 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:27.025 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:27.227 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:27.429 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:27.682 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:27.904 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:28.107 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:28.344 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:28.547 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:28.748 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:28.986 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:29.226 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:29.465 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:29.684 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:29.904 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:30.108 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:30.347 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:30.586 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:30.824 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:31.030 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:31.264 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:31.465 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:31.682 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:31.906 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:32.147 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:32.383 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:32.587 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:32.824 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:33.064 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:33.266 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:33.466 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:33.684 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:33.906 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:34.110 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:34.346 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:34.584 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:34.785 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:34.985 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:35.227 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:35.468 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:35.682 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:35.906 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotSpeakingFrame
+2026-08-18 15:33:35.945 | DEBUG    | pipecat.transports.base_output:_handle_frame:809 - Bot stopped speaking based on TTSStoppedFrame
+2026-08-18 15:33:35.946 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:743 - Bot stopped speaking
+2026-08-18 15:33:35.947 | DEBUG    | voice.processors.runtime_responder:process_frame:84 - [responder] frame=BotStoppedSpeakingFrame

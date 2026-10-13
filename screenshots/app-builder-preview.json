@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Kivo — Customer operations for D2C",
+      "hasCanvas": false,
+      "bodyTextLen": 2472,
+      "bodyTextHash": "cab64d7577c00a6564c871595c260d0ee70c9387edd0ae863da1f97d54f36f6e",
+      "bodyTextPrefix": "K Kivo Product Pricing Security Docs Open console CUSTOMER OPERA",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Kivo — Customer operations for D2C",
+      "hasCanvas": false,
+      "bodyTextLen": 2429,
+      "bodyTextHash": "9841a51ef6ec6849737d07f0d6ac2336697e1a7443713cda9c38008b22bb1204",
+      "bodyTextPrefix": "K Kivo CUSTOMER OPERATIONS FOR D2C The desk that resolves. The h",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

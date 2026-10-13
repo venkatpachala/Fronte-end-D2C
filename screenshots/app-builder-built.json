@@ -1,0 +1,43 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Archal — Customer operations for D2C",
+      "hasCanvas": false,
+      "bodyTextLen": 2497,
+      "bodyTextHash": "c86054574be9ef0fe5c071b5139c94912941304313873c68a3705e10bd28b71d",
+      "bodyTextPrefix": "A Archal Product Pricing Security Docs Open console CUSTOMER OPE",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Archal — Customer operations for D2C",
+      "hasCanvas": false,
+      "bodyTextLen": 2454,
+      "bodyTextHash": "c4e388ece64789e629feac57acfdb08103d28a089d19436f66a4f2dce8bd59a7",
+      "bodyTextPrefix": "A Archal CUSTOMER OPERATIONS FOR D2C The desk that resolves. The",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": true,
+  "baselineReasons": [
+    "desktop: title changed (\"Kivo — Customer operations for D2C\" -> \"Archal — Customer operations for D2C\")",
+    "desktop: body text replaced (similar length, page start changed)",
+    "mobile: title changed (\"Kivo — Customer operations for D2C\" -> \"Archal — Customer operations for D2C\")",
+    "mobile: body text replaced (similar length, page start changed)"
+  ]
+}

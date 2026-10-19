@@ -1,5 +1,11 @@
 export const STATUS_LABEL: Record<string, string> = {
   open: "Open",
+  human_owned: "With support agent",
+  resolved: "Resolved by operator",
+  succeeded: "Workflow completed",
+  failed: "Needs review",
+  waiting_auth: "Verification needed",
+  waiting_input: "Waiting on customer",
   waiting_customer: "Waiting on customer",
   waiting_approval: "Needs approval",
   ai_resolved: "Resolved by Archal",

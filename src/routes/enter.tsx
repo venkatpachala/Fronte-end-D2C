@@ -42,9 +42,9 @@ function Enter() {
     <SiteFrame>
       <main className="mx-auto max-w-lg px-4 py-16">
         <p className="font-mono text-xs uppercase tracking-widest text-muted">Owner</p>
-        <h1 className="mt-3 font-display text-4xl leading-none">Open a brand on Archal.</h1>
+        <h1 className="mt-3 font-display text-4xl leading-none">Open a brand on the D2C agent.</h1>
         <p className="mt-4 text-muted">
-          Signup creates a tenant, a widget test key, and a supervisor test key. The seeded desks stay open without an account.
+          Signup creates the tenant on the agent, a widget test key, and a supervisor test key. The cookie is the brand for the desk, the sandbox, and the widget.
         </p>
         <div className="mt-6 flex gap-2">
           <button type="button" className={`h-11 rounded-md px-4 text-sm ${mode === "signup" ? "bg-accent text-ink" : "border border-line"}`} onClick={() => setMode("signup")}>
@@ -73,7 +73,7 @@ supervisor ${keys.supervisor_key}`}
           </pre>
         )}
         <Link to="/console" className="mt-6 inline-flex h-11 items-center text-sm underline">
-          Use the seeded desk instead
+          Open your support desk
         </Link>
       </main>
     </SiteFrame>

@@ -1,68 +1,56 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { runChat } from "@/lib/api";
-import { caseFromChat } from "@/lib/cases";
-import { gradeSandbox, SANDBOX_STEPS } from "@/lib/runtime";
-import { activeBrand, hasReadyPolicy, useArchal } from "@/lib/store";
+import { SANDBOX_STEPS } from "@/lib/runtime";
+import { useBrand } from "@/components/console/brand";
 
 export const Route = createFileRoute("/console/sandbox")({ component: Sandbox });
 
 type Row = { id: string; pass: boolean; notes: string[]; response: string };
 
 function Sandbox() {
-  const brand = useArchal((s) => activeBrand(s));
-  const hasPolicy = useArchal((s) => hasReadyPolicy(s, s.activeId));
-  const pushCase = useArchal((s) => s.pushCase);
-  const bumpUsage = useArchal((s) => s.bumpUsage);
-  const markSandbox = useArchal((s) => s.markSandbox);
+  useBrand();
   const [rows, setRows] = useState<Row[]>([]);
   const [busy, setBusy] = useState(false);
   const [summary, setSummary] = useState("");
 
   async function runAll() {
-    if (!brand) return;
     setBusy(true);
     setSummary("");
-    const next: Row[] = [];
-    let failed = false;
-    for (const step of SANDBOX_STEPS) {
-      const result = await runChat({
-        data: {
-          sessionTenant: brand.id,
-          bodyTenant: "someone-else",
-          message: step.message,
-          hasPolicy,
-          usedToday: brand.usedToday,
-          dailyCap: brand.dailyCap,
-          killed: brand.killed,
-          photosAlready: false,
-        },
-      });
-      if (!result.ok) {
-        next.push({ id: step.id, pass: false, notes: [result.error], response: result.error });
-        failed = true;
-        continue;
-      }
-      if (result.ok && result.tenantId !== brand.id) {
-        next.push({ id: step.id, pass: false, notes: ["Tenant switched."], response: result.response });
-        failed = true;
-        continue;
-      }
-      const grade = gradeSandbox(result, step.id);
-      if (!grade.pass) failed = true;
-      next.push({ id: step.id, pass: grade.pass, notes: grade.notes, response: result.response });
-      pushCase(caseFromChat(brand.id, step.message, result));
-      bumpUsage();
+    const response = await fetch("/v1/sandbox/run", {
+      method: "POST",
+      credentials: "include",
+      headers: { accept: "application/json" },
+    });
+    const body = (await response.json().catch(() => ({}))) as {
+      detail?: string;
+      passed?: boolean;
+      turns?: { message?: string; workflow_status?: string; citations?: string[]; missing_inputs?: string[] }[];
+    };
+    if (!response.ok) {
+      setRows([]);
+      setSummary(body.detail || "The agent refused the sandbox. Sign in on Enter first.");
+      setBusy(false);
+      return;
     }
+    const next: Row[] = SANDBOX_STEPS.map((step, index) => {
+      const turn = body.turns?.[index];
+      const notes = [
+        turn?.workflow_status ? `status ${turn.workflow_status}` : "no turn",
+        ...(turn?.citations ?? []),
+        ...(turn?.missing_inputs ?? []).map((item) => `missing ${item}`),
+      ];
+      const pass =
+        (step.id === "S1" && (turn?.citations?.length ?? 0) > 0) ||
+        (step.id === "S2" && (turn?.workflow_status === "waiting_customer" || (turn?.missing_inputs?.length ?? 0) > 0)) ||
+        (step.id === "S3" && turn?.workflow_status === "waiting_approval");
+      return { id: step.id, pass, notes, response: turn?.workflow_status || "no reply" };
+    });
     setRows(next);
-    if (!failed && hasPolicy && !brand.killed) {
-      markSandbox();
-      setSummary("Sandbox passed. Live tools stay off until an admin enables this brand.");
-    } else if (!hasPolicy) {
-      setSummary("No policy snapshot, so the gate cannot pass. Upload a PDF in Knowledge.");
-    } else {
-      setSummary("Sandbox did not pass. Read the notes, then run it again.");
-    }
+    setSummary(
+      body.passed
+        ? "Sandbox passed on the D2C agent. Live tools stay off until an admin enables this brand."
+        : "Sandbox did not pass. The agent still holds refunds above the cap.",
+    );
     setBusy(false);
   }
 
@@ -70,7 +58,7 @@ function Sandbox() {
     <div>
       <h1 className="text-2xl font-medium">Sandbox</h1>
       <p className="mt-1 max-w-2xl text-sm text-muted">
-        Three messages run against the server. Each request sends a forged body tenant. A pass means the session brand still answered, with a citation, a photo ask, and a held refund.
+        Three messages run on the D2C agent for the signed-in brand. A pass needs a citation, a photo ask, and a refund held above the cap. Stripe stays off.
       </p>
       <button
         type="button"
@@ -80,9 +68,6 @@ function Sandbox() {
       >
         {busy ? "Running…" : "Run three messages"}
       </button>
-      {brand?.sandboxPassedAt && (
-        <p className="mt-3 font-mono text-xs text-muted">Last pass {brand.sandboxPassedAt.slice(0, 19).replace("T", " ")}</p>
-      )}
       <ul className="mt-6 space-y-3">
         {SANDBOX_STEPS.map((step) => {
           const row = rows.find((r) => r.id === step.id);

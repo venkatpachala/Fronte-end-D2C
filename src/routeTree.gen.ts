@@ -40,6 +40,7 @@ import { Route as ConsoleKnowledgeRouteImport } from './routes/console/knowledge
 import { Route as ConsolePoliciesRouteImport } from './routes/console/policies'
 import { Route as ConsoleQualityRouteImport } from './routes/console/quality'
 import { Route as ConsoleSandboxRouteImport } from './routes/console/sandbox'
+import { Route as ConsoleSettingsRouteImport } from './routes/console/settings'
 import { Route as InteractionsSplatRouteImport } from './routes/interactions/$'
 import { Route as PrivacyDeleteRouteImport } from './routes/privacy_.delete'
 import { Route as V1SplatRouteImport } from './routes/v1/$'
@@ -204,6 +205,11 @@ const ConsoleSandboxRoute = ConsoleSandboxRouteImport.update({
   path: '/sandbox',
   getParentRoute: () => ConsoleRouteRoute,
 } as any)
+const ConsoleSettingsRoute = ConsoleSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => ConsoleRouteRoute,
+} as any)
 const InteractionsSplatRoute = InteractionsSplatRouteImport.update({
   id: '/interactions/$',
   path: '/interactions/$',
@@ -276,6 +282,7 @@ export interface FileRoutesByFullPath {
   '/console/policies': typeof ConsolePoliciesRoute
   '/console/quality': typeof ConsoleQualityRoute
   '/console/sandbox': typeof ConsoleSandboxRoute
+  '/console/settings': typeof ConsoleSettingsRoute
   '/interactions/$': typeof InteractionsSplatRoute
   '/privacy/delete': typeof PrivacyDeleteRoute
   '/v1/$': typeof V1SplatRoute
@@ -315,6 +322,7 @@ export interface FileRoutesByTo {
   '/console/policies': typeof ConsolePoliciesRoute
   '/console/quality': typeof ConsoleQualityRoute
   '/console/sandbox': typeof ConsoleSandboxRoute
+  '/console/settings': typeof ConsoleSettingsRoute
   '/interactions/$': typeof InteractionsSplatRoute
   '/privacy/delete': typeof PrivacyDeleteRoute
   '/v1/$': typeof V1SplatRoute
@@ -357,6 +365,7 @@ export interface FileRoutesById {
   '/console/policies': typeof ConsolePoliciesRoute
   '/console/quality': typeof ConsoleQualityRoute
   '/console/sandbox': typeof ConsoleSandboxRoute
+  '/console/settings': typeof ConsoleSettingsRoute
   '/interactions/$': typeof InteractionsSplatRoute
   '/privacy_/delete': typeof PrivacyDeleteRoute
   '/v1/$': typeof V1SplatRoute
@@ -400,6 +409,7 @@ export interface FileRouteTypes {
     | '/console/policies'
     | '/console/quality'
     | '/console/sandbox'
+    | '/console/settings'
     | '/interactions/$'
     | '/privacy/delete'
     | '/v1/$'
@@ -439,6 +449,7 @@ export interface FileRouteTypes {
     | '/console/policies'
     | '/console/quality'
     | '/console/sandbox'
+    | '/console/settings'
     | '/interactions/$'
     | '/privacy/delete'
     | '/v1/$'
@@ -480,6 +491,7 @@ export interface FileRouteTypes {
     | '/console/policies'
     | '/console/quality'
     | '/console/sandbox'
+    | '/console/settings'
     | '/interactions/$'
     | '/privacy_/delete'
     | '/v1/$'
@@ -738,6 +750,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConsoleSandboxRouteImport
       parentRoute: typeof ConsoleRouteRoute
     }
+    '/console/settings': {
+      id: '/console/settings'
+      path: '/settings'
+      fullPath: '/console/settings'
+      preLoaderRoute: typeof ConsoleSettingsRouteImport
+      parentRoute: typeof ConsoleRouteRoute
+    }
     '/interactions/$': {
       id: '/interactions/$'
       path: '/interactions/$'
@@ -821,6 +840,7 @@ interface ConsoleRouteRouteChildren {
   ConsolePoliciesRoute: typeof ConsolePoliciesRoute
   ConsoleQualityRoute: typeof ConsoleQualityRoute
   ConsoleSandboxRoute: typeof ConsoleSandboxRoute
+  ConsoleSettingsRoute: typeof ConsoleSettingsRoute
   ConsoleIndexRoute: typeof ConsoleIndexRoute
   ConsoleCasesCaseIdRoute: typeof ConsoleCasesCaseIdRoute
 }
@@ -835,6 +855,7 @@ const ConsoleRouteRouteChildren: ConsoleRouteRouteChildren = {
   ConsolePoliciesRoute: ConsolePoliciesRoute,
   ConsoleQualityRoute: ConsoleQualityRoute,
   ConsoleSandboxRoute: ConsoleSandboxRoute,
+  ConsoleSettingsRoute: ConsoleSettingsRoute,
   ConsoleIndexRoute: ConsoleIndexRoute,
   ConsoleCasesCaseIdRoute: ConsoleCasesCaseIdRoute,
 }

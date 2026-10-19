@@ -4,7 +4,7 @@ import { Mark } from "@/components/site/frame";
 import { BrandProvider, useBrand } from "@/components/console/brand";
 import { cn } from "@/lib/cn";
 import { inr } from "@/lib/format";
-import { useHydrateArchal } from "@/components/console/hydrate";
+
 
 const WORK = [
   { to: "/console", label: "Overview", exact: true },
@@ -16,6 +16,7 @@ const WORK = [
 ] as const;
 
 const SETUP = [
+  { to: "/console/settings", label: "Brand settings", exact: false },
   { to: "/console/sandbox", label: "Sandbox", exact: false },
   { to: "/console/knowledge", label: "Knowledge", exact: false },
   { to: "/console/connections", label: "Connections", exact: false },
@@ -23,7 +24,6 @@ const SETUP = [
 ] as const;
 
 export function ConsoleFrame({ children }: { children: ReactNode }) {
-  useHydrateArchal();
   return (
     <BrandProvider>
       <ConsoleChrome>{children}</ConsoleChrome>
@@ -77,10 +77,10 @@ function ConsoleChrome({ children }: { children: ReactNode }) {
             <select
               id="brand"
               className="mt-1 h-11 w-full rounded-md border border-line bg-elev px-2 text-sm"
-              value={brands.some((row) => row.id === brandId) ? brandId : (brand?.id ?? "northline")}
+              value={brands.some((row) => row.id === brandId) ? brandId : (brand?.id ?? "")}
               onChange={(event) => setBrandId(event.target.value)}
             >
-              {brands.length === 0 ? <option value="northline">Northline</option> : null}
+              {brands.length === 0 ? <option value="">Sign in to select a brand</option> : null}
               {brands.map((row) => (
                 <option key={row.id} value={row.id}>
                   {row.name}
@@ -105,7 +105,7 @@ function ConsoleChrome({ children }: { children: ReactNode }) {
             <p className="truncate font-mono text-xs text-muted">
               {brand ? `${brand.name} · ${brand.segment} · cap ${inr(brand.refundCap)}` : "Loading the desk"}
             </p>
-            <p className="shrink-0 font-mono text-xs text-muted">Charges off</p>
+            <p className="shrink-0 font-mono text-xs text-muted">Supervised support</p>
           </div>
           <div className="p-4 md:p-6">
             {error ? <p className="mb-4 text-sm text-accent">{error}</p> : null}

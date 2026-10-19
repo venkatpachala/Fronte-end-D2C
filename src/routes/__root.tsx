@@ -14,7 +14,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "Archal is the desk, the policy-cited agent, and the refund hold for D2C brands. Chat, WhatsApp, email, and voice. Money waits for a person.",
+          "Archal is the desk, the policy-cited agent, and the refund hold for D2C brands. Customer chat, grounded policies, and supervised requests.",
       },
       { name: "theme-color", content: "#090a0b" },
     ],

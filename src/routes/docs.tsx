@@ -32,9 +32,9 @@ const CALLS = [
   ["POST", "/v1/webhooks", "https URL. Supervisor key."],
   ["POST", "/v1/tenant/kill", "Disable chat for the key's brand."],
   ["POST", "/v1/tenant/restore", "Enable it again."],
-  ["POST", "/v1/ops/login", "ops / ops. Supervisor cookie."],
+  ["POST", "/v1/ops/login", "Configured operator credentials. Prefer owner sign-in."],
   ["POST", "/support", "Stuck-case note. Does not charge."],
-  ["POST", "/privacy/delete", "Deletes the owner account for the session."],
+  ["POST", "/privacy/delete", "Queues an authenticated deletion request for review."],
 ];
 
 function Docs() {
@@ -57,7 +57,7 @@ function Docs() {
     <Page
       eyebrow="API"
       title="The same calls the desk uses."
-      lede="Northline's test keys are archal_test_n4k2 and archal_sup_n4k2. Mira Pantry's are archal_test_m8p1 and archal_sup_m8p1. Card charges stay off."
+      lede="Sign up to create your own tenant and keys. Operator APIs require your authenticated session or a supervisor bearer key. Financial actions are disabled by default."
     >
       <div className="flex flex-col gap-2 sm:flex-row">
         <button type="button" disabled={busy} className="h-11 rounded-md bg-accent px-4 text-sm font-medium text-ink disabled:opacity-50" onClick={() => void call("/health")}>
@@ -68,7 +68,7 @@ function Docs() {
           disabled={busy}
           className="h-11 rounded-md border border-line px-4 text-sm disabled:opacity-50"
           onClick={() =>
-            void call("/v1/approvals", { headers: { authorization: "Bearer archal_sup_n4k2" } })
+            void call("/v1/approvals", { credentials: "include" })
           }
         >
           GET approvals
@@ -80,7 +80,7 @@ function Docs() {
           onClick={() =>
             void call("/v1/chat", {
               method: "POST",
-              headers: { authorization: "Bearer archal_test_n4k2", "content-type": "application/json" },
+              credentials: "include", headers: { "content-type": "application/json" },
               body: JSON.stringify({ message: "What is the return policy for damaged products?" }),
             })
           }

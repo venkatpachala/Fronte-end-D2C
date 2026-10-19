@@ -4,7 +4,7 @@ import { useBrand } from "@/components/console/brand";
 import { Button, Empty, LoadingLines, Panel, StatusPill } from "@/components/ops/ui";
 import { useLoad } from "@/components/ops/use-load";
 import { intentLabel, inr, whenLabel } from "@/lib/format";
-import { decideRefund, getConversation, postReply } from "@/lib/ops";
+import { actOnCase, decideRefund, getConversation, postReply } from "@/lib/ops";
 
 export const Route = createFileRoute("/console/inbox/$id")({ component: Thread });
 
@@ -72,6 +72,14 @@ function Thread() {
         <StatusPill status={conversation.status} />
       </div>
 
+      <div className="mt-4 flex flex-wrap gap-2">{(["claim", "release", "resolve"] as const).map((action) => (
+        <Button key={action} disabled={busy} onClick={() => {
+          setBusy(true);
+          void actOnCase({ data: { id, action } }).then(() => reload())
+            .catch((error: unknown) => setNote(error instanceof Error ? error.message : "Action failed"))
+            .finally(() => setBusy(false));
+        }}>{action === "claim" ? "Take over" : action === "release" ? "Return to AI" : "Mark resolved"}</Button>
+      ))}</div>
       {wrongBrand ? (
         <p className="mt-4 rounded-md border border-line bg-elev px-3 py-3 text-sm text-muted">
           This thread belongs to {conversation.brandId}. Switch the brand in the sidebar if you meant to work there.
@@ -84,13 +92,13 @@ function Thread() {
             <article
               key={message.id}
               className={
-                message.author === "customer"
+                message.author === "user"
                   ? "ml-0 rounded-lg border border-line bg-surface px-4 py-3 md:mr-10"
                   : "rounded-lg border border-line bg-elev px-4 py-3 md:ml-10"
               }
             >
               <p className="font-mono text-xs text-muted">
-                {message.author === "archal" ? "Archal" : message.author === "person" ? "Floor" : conversation.customerLabel}
+                {message.author === "assistant" ? "AI assistant" : message.author === "operator" ? "Support agent" : conversation.customerLabel}
               </p>
               <p className="mt-2 text-sm">{message.body}</p>
               {message.citation ? (
@@ -134,14 +142,13 @@ function Thread() {
             <Row k="Order" v={conversation.orderRef ?? "—"} />
             <Row k="Amount" v={inr(conversation.amountInr)} />
             <Row k="Assignee" v={conversation.assignee} />
-            <Row k="Confidence" v={String(conversation.confidence)} />
             <Row k="Handled by" v={conversation.aiHandled ? "Archal" : "Floor"} />
           </dl>
           {conversation.status === "waiting_approval" ? (
             <div className="mt-5 space-y-2">
-              <p className="text-sm text-muted">Above the brand cap. Approving holds the case. It does not call Stripe.</p>
+              <p className="text-sm text-muted">Review the request and evidence before approving. The backend enforces identity, policy and payment gates.</p>
               <Button type="button" disabled={busy} className="w-full" onClick={() => void decide("approve")}>
-                Approve hold
+                Approve request
               </Button>
               <Button type="button" tone="ghost" disabled={busy} className="w-full" onClick={() => void decide("reject")}>
                 Reject

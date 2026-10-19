@@ -4,11 +4,11 @@ import { Page } from "@/components/site/frame";
 export const Route = createFileRoute("/security")({ component: Security });
 
 const ROWS = [
-  ["Tenant source", "Session, path, or cookie. Never the model, never an unverified JSON field."],
+  ["Tenant source", "Authenticated operator credentials or an opaque customer session determine access."],
   ["Mismatch", "403 on chat and case reads when the body names another brand."],
   ["Empty filter", "Retrieval with no tenant returns no chunks."],
   ["Keys", "The console shows prefixes. Raw secrets are not rendered back."],
-  ["Money", "Above ₹2,000 the case waits. Approve does not call Stripe."],
+  ["Money", "Each brand has explicit policy limits. Real payments are disabled pending merchant validation."],
   ["Kill switch", "A disabled brand gets 403 on the next chat."],
   ["Cap", "Default 2,000 chats a day. Past that, 429."],
   ["WhatsApp", "Shown as unavailable. There is no save button."],
@@ -19,7 +19,7 @@ function Security() {
     <Page
       eyebrow="Security"
       title="Isolation is a test, not a slogan."
-      lede="The preview enforces the same refusals the production control plane is built around. It does not store real shop tokens."
+      lede="Access controls are enforced by the API. Saved provider credentials are encrypted; production requires configured encryption keys and HTTPS."
     >
       <div className="overflow-hidden rounded-lg border border-line">
         {ROWS.map(([k, v]) => (

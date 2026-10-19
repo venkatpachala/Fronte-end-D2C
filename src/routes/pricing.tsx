@@ -6,20 +6,20 @@ export const Route = createFileRoute("/pricing")({ component: Pricing });
 const TIERS = [
   {
     name: "Desk",
-    price: "₹18,000",
-    period: "per brand / month",
+    price: "Pilot",
+    period: "invitation only",
     lead: "The queue, without the agent.",
-    points: ["WhatsApp, email, and chat", "3 seats", "Cases, assignment, replies", "No policy agent"],
+    points: ["Storefront chat", "Brand owner access", "Cases, assignment, replies", "No policy agent"],
     cta: "Open the desk",
     to: "/console/inbox" as const,
     hot: false,
   },
   {
     name: "Resolve",
-    price: "₹48,000",
-    period: "per brand / month",
+    price: "Pilot",
+    period: "invitation only",
     lead: "The agent, the hold, and the score.",
-    points: ["Everything in Desk", "Policy-cited replies", "Refund cap and approvals", "Quality on every scored thread", "Voice on the same case"],
+    points: ["Everything in Desk", "Policy-cited replies", "Refund cap and approvals", "Deterministic response checks", "Operator handoff on the same case"],
     cta: "Use Resolve",
     to: "/console" as const,
     hot: true,
@@ -41,9 +41,9 @@ function Pricing() {
     <SiteFrame>
       <main className="mx-auto max-w-6xl px-4 py-16 md:py-20">
         <p className="font-mono text-xs uppercase tracking-widest text-muted">Pricing</p>
-        <h1 className="mt-4 max-w-3xl font-display text-5xl leading-none">Priced per brand. The preview does not bill.</h1>
+        <h1 className="mt-4 max-w-3xl font-display text-5xl leading-none">Start with a supervised pilot.</h1>
         <p className="mt-5 max-w-2xl text-lg text-muted">
-          These are the live plans. This workspace is the product with card charges off, so you can run the desk before a contract.
+          This release is an invited pilot. Paid plans and subscription billing are not available. Validate the support workflow with your own policies before a wider rollout.
         </p>
         <div className="mt-12 grid gap-4 lg:grid-cols-3">
           {TIERS.map((tier) => (
@@ -74,7 +74,7 @@ function Pricing() {
           ))}
         </div>
         <p className="mt-10 max-w-2xl text-sm text-muted">
-          Shopify and Stripe credentials are not stored here. A connection, when you add one in setup, keeps a last four. WhatsApp in the install screen is still marked unavailable until a brand is enabled.
+          The backend encrypts saved Shopify and Stripe credentials. Connecting a provider does not enable real payments. WhatsApp and voice support are not available in this pilot.
         </p>
       </main>
     </SiteFrame>

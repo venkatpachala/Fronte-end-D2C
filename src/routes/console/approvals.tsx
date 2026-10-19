@@ -36,7 +36,7 @@ function Approvals() {
       <h1 className="font-display text-4xl leading-none">Approvals</h1>
       <p className="mt-3 max-w-xl text-sm text-muted">
         {brand
-          ? `Anything over ${inr(brand.refundCap)} waits here. Approve holds the case. Stripe is not called.`
+          ? `Anything over ${inr(brand.refundCap)} waits here. Approval resumes a gated workflow. Payment status is confirmed by the backend.`
           : "Refunds above the cap wait here."}
       </p>
       {note ? <p className="mt-4 text-sm text-muted">{note}</p> : null}

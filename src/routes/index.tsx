@@ -7,7 +7,7 @@ const SURFACES = [
   {
     n: "01",
     t: "Desk",
-    d: "One queue for WhatsApp, email, chat, and voice. The brand is the boundary. Northline never sees Mira.",
+    d: "A customer chat widget and operator inbox with tenant-scoped cases, replies, and approvals.",
     to: "/console/inbox" as const,
     cta: "Open the inbox",
   },
@@ -47,7 +47,7 @@ function Home() {
                 The desk that resolves. The hold that stops the refund.
               </h1>
               <p className="mt-6 max-w-xl text-lg text-muted">
-                Archal runs support for brands that sell on Shopify and talk on WhatsApp. The agent cites your policy. Anything above your cap waits for a person. No one is told the money has moved until it has.
+                Archal connects your policy documents, customer chat, and support desk. Review requests with their evidence and history. Live financial actions require separate integration validation.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link
@@ -72,9 +72,9 @@ function Home() {
 
         <section className="border-b border-line">
           <div className="mx-auto grid max-w-6xl sm:grid-cols-3">
-            <Metric k="Resolved without a person" v="68%" d="On the Northline workspace, last 14 days." />
-            <Metric k="First reply" v="11s" d="Policy answers. Photo asks do not pretend to be refunds." />
-            <Metric k="Refund cap" v="₹2,000" d="Northline’s line. Mira Pantry holds at ₹500." />
+            <Metric k="Knowledge" v="Your policies" d="Upload text PDFs and reference their sources in chat." />
+            <Metric k="Human review" v="In the loop" d="Take over a case and reply directly to the customer." />
+            <Metric k="Financial actions" v="Gated" d="New brands start with transactional automations off." />
           </div>
         </section>
 
@@ -121,10 +121,10 @@ function Home() {
           </div>
           <div className="mt-8 grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-4">
             {[
-              ["WhatsApp", "The thread most D2C customers actually send."],
-              ["Email", "Order mail, with the clause attached."],
+              ["WhatsApp", "Not available in this release."],
+              ["Email", "Verification emails require configured SMTP."],
               ["Chat", "The widget on the storefront."],
-              ["Voice", "Calls land on the same case, not a separate tool."],
+              ["Voice", "Experimental; outside the supported chat pilot."],
             ].map(([title, copy]) => (
               <div key={title} className="bg-bg px-4 py-6">
                 <h3 className="text-lg">{title}</h3>
@@ -178,12 +178,12 @@ function DeskCard() {
   return (
     <div className="rounded-lg border border-line bg-elev">
       <div className="flex items-center justify-between border-b border-line px-4 py-3">
-        <span className="font-mono text-xs text-muted">Northline · inbox</span>
+        <span className="font-mono text-xs text-muted">Illustrative inbox</span>
         <span className="rounded-sm border border-accent px-2 py-1 font-mono text-xs text-accent">Needs approval</span>
       </div>
       <div className="space-y-3 p-4">
         <div className="rounded-md border border-line bg-surface px-3 py-3 text-sm">
-          <p className="font-mono text-xs text-muted">Arun P. · email · NL-18455</p>
+          <p className="font-mono text-xs text-muted">Example customer · chat · NL-18455</p>
           <p className="mt-2">Please refund ₹2,500. The jacket was stained on arrival.</p>
         </div>
         <div className="rounded-md border border-line bg-bg px-3 py-3 text-sm">

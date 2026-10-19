@@ -25,7 +25,7 @@ function Overview() {
     <div>
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="font-mono text-xs uppercase tracking-widest text-muted">Today</p>
+          <p className="font-mono text-xs uppercase tracking-widest text-muted">Recent cases</p>
           <h1 className="mt-2 font-display text-4xl leading-none">{brand?.name ?? "Desk"}</h1>
           <p className="mt-3 max-w-xl text-sm text-muted">
             What is open, what Archal already closed, and what is waiting because it moves money.
@@ -41,16 +41,16 @@ function Overview() {
 
       <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <Stat k="Needs a person" v={String(data.open)} d="Open, waiting, or held" />
-        <Stat k="Resolved by Archal" v={String(data.aiResolved)} d="Closed from policy, no charge" />
+        <Stat k="Resolved by Archal" v={String(data.aiResolved)} d="Completed AI workflows" />
         <Stat k="Above the cap" v={String(data.held)} d={brand ? `Hold line ${inr(brand.refundCap)}` : "Held"} />
-        <Stat k="Mean confidence" v={`${data.avgConfidence}`} d="Across this brand’s cases" />
+        <Stat k="Cases in view" v={String(data.volume.reduce((total, day) => total + day.inbound, 0))} d="Most recent 100 cases" />
       </div>
 
       <div className="mt-6 grid gap-4 lg:grid-cols-5">
         <Panel className="p-4 lg:col-span-3">
           <div className="flex items-baseline justify-between gap-3">
             <h2 className="text-lg">Fourteen days</h2>
-            <p className="font-mono text-xs text-muted">Inbound and resolved by Archal</p>
+            <p className="font-mono text-xs text-muted">Cases updated and AI workflows completed</p>
           </div>
           <div className="mt-4 h-44">
             {chartReady ? (

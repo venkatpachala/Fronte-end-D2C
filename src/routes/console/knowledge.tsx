@@ -1,54 +1,56 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { useArchal } from "@/lib/store";
-
+import { useEffect, useState } from "react";
 export const Route = createFileRoute("/console/knowledge")({ component: Knowledge });
-
+type Doc = { id: string; filename: string; status: string; page_count: number; error?: string };
 function Knowledge() {
-  const activeId = useArchal((s) => s.activeId);
-  const docs = useArchal((s) => s.docs.filter((d) => d.tenantId === s.activeId));
-  const addDoc = useArchal((s) => s.addDoc);
-  const removeDoc = useArchal((s) => s.removeDoc);
+  const [docs, setDocs] = useState<Doc[]>([]);
   const [error, setError] = useState("");
-
-  return (
-    <div>
-      <h1 className="text-2xl font-medium">Knowledge</h1>
-      <p className="mt-1 max-w-2xl text-sm text-muted">
-        PDF only, 8 MB max. A ready file creates a snapshot id for this brand. The sample Northline pack is not copied to a new brand.
-      </p>
-      <label className="mt-6 inline-flex h-11 cursor-pointer items-center rounded-md bg-accent px-4 text-sm font-medium text-ink">
-        Upload PDF
-        <input
-          type="file"
-          accept="application/pdf,.pdf"
-          className="sr-only"
-          onChange={(e) => {
-            const file = e.target.files?.[0];
-            e.target.value = "";
-            if (!file) return;
-            const result = addDoc({ name: file.name, bytes: file.size });
-            setError(result.ok ? "" : result.error || "Upload failed.");
-          }}
-        />
-      </label>
-      {error && <p className="mt-3 text-sm text-muted">{error}</p>}
-      <ul className="mt-6 divide-y divide-line rounded-lg border border-line">
-        {docs.length === 0 && <li className="px-4 py-6 text-sm text-muted">No snapshot for {activeId}.</li>}
-        {docs.map((d) => (
-          <li key={d.id} className="flex flex-col gap-2 px-4 py-4 md:flex-row md:items-center md:justify-between">
-            <div>
-              <p>{d.name}</p>
-              <p className="mt-1 font-mono text-xs text-muted">
-                {d.status === "ready" ? `${d.snapshotId} · ${d.pages} pages` : d.error}
-              </p>
-            </div>
-            <button type="button" className="h-11 rounded-md border border-line px-3 text-sm" onClick={() => removeDoc(d.id)}>
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+  const [busy, setBusy] = useState(false);
+  async function refresh() {
+    const response = await fetch("/v1/knowledge", { credentials: "include" });
+    const body = await response.json() as { documents?: Doc[]; detail?: string };
+    if (!response.ok) throw new Error(body.detail || "Sign in to view knowledge.");
+    setDocs((body.documents || []).filter((doc) => doc.status !== "deleted"));
+  }
+  useEffect(() => { void refresh().catch((e: unknown) => setError(e instanceof Error ? e.message : "Could not load documents.")); }, []);
+  async function upload(file: File) {
+    if (file.size > 8 * 1024 * 1024) { setError("Choose a PDF under 8 MB."); return; }
+    setBusy(true); setError("");
+    try {
+      const data = new FormData(); data.set("file", file);
+      const response = await fetch("/v1/knowledge", { method: "POST", credentials: "include", body: data, signal: AbortSignal.timeout(90000) });
+      const body = await response.json() as { detail?: string };
+      if (!response.ok) throw new Error(body.detail || "Upload failed.");
+      await refresh();
+    } catch (e) { setError(e instanceof Error ? e.message : "Upload failed."); }
+    finally { setBusy(false); }
+  }
+  async function remove(id: string) {
+    setBusy(true); setError("");
+    try {
+      const response = await fetch(`/v1/knowledge/${encodeURIComponent(id)}`, { method: "DELETE", credentials: "include" });
+      if (!response.ok) throw new Error("The document could not be removed.");
+      await refresh();
+    } catch (e) { setError(e instanceof Error ? e.message : "Delete failed."); }
+    finally { setBusy(false); }
+  }
+  return <div>
+    <h1 className="text-2xl font-medium">Knowledge</h1>
+    <p className="mt-2 max-w-2xl text-sm text-muted">Text PDFs up to 8 MB and 200 pages. All ready documents form your brand's collection. Documents remain available after service restarts.</p>
+    <label className="mt-6 inline-flex h-11 cursor-pointer items-center rounded-md bg-accent px-4 text-sm font-medium text-ink">
+      {busy ? "Processing…" : "Upload PDF"}
+      <input type="file" accept="application/pdf,.pdf" disabled={busy} className="sr-only" onChange={(e) => {
+        const file = e.target.files?.[0]; e.target.value = ""; if (file) void upload(file);
+      }} />
+    </label>
+    {error && <p role="alert" className="mt-3 text-sm">{error}</p>}
+    <ul className="mt-6 divide-y divide-line rounded-lg border border-line">
+      {!docs.length && <li className="px-4 py-6 text-sm text-muted">No documents yet.</li>}
+      {docs.map((doc) => <li key={doc.id} className="flex items-start justify-between gap-4 px-4 py-4">
+        <div><p>{doc.filename}</p><p className="mt-1 text-xs text-muted">{doc.status === "ingested" ? "Ready" : doc.status} · {doc.page_count} pages</p>
+          {doc.error && <p className="mt-1 text-xs">{doc.error}</p>}</div>
+        <button disabled={busy} onClick={() => void remove(doc.id)} className="h-10 rounded border border-line px-3 text-sm">Remove</button>
+      </li>)}
+    </ul>
+  </div>;
 }

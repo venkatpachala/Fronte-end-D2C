@@ -11,5 +11,5 @@ const handle = async ({ request }: { request: Request }) => {
 };
 
 export const Route = createFileRoute("/v1/$")({
-  server: { handlers: { GET: handle, POST: handle } },
+  server: { handlers: { GET: handle, POST: handle, PUT: handle, DELETE: handle } },
 });

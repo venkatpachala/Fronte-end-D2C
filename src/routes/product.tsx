@@ -15,15 +15,15 @@ function Product() {
               A helpdesk that knows when to stop.
             </h1>
             <p className="mt-6 max-w-2xl text-lg text-muted">
-              Gorgias-shaped inbox. Fin-shaped resolution. Observe-shaped scoring. The difference is the hold: Archal will not tell a customer a refund is finished, and it will not call Stripe, until a person clears the amount.
+              A persistent inbox, answers grounded in uploaded policies, and human review for support actions. New brands start with real payments disabled.
             </p>
           </div>
         </section>
 
         <Band
           eyebrow="Desk"
-          title="Every channel is a case. The brand is the wall."
-          body="WhatsApp, email, storefront chat, and voice land in one queue. Filters are the states operators use: open, waiting on the customer, waiting on approval, resolved by Archal. Switch from Northline to Mira Pantry and the queue changes. There is no blended inbox."
+          title="Customer chat and human support share a case."
+          body="Storefront chat creates a case in your brand inbox. Operators can take over, reply directly to the customer and resolve the conversation. WhatsApp and voice are not available in this pilot. The example cases alongside this text are illustrative."
           cta="Open the inbox"
           to="/console/inbox"
           aside={
@@ -62,7 +62,7 @@ function Product() {
             <div className="rounded-lg border border-line p-4">
               <p className="font-mono text-xs text-muted">Decision</p>
               <p className="mt-3 text-2xl">₹2,500 held</p>
-              <p className="mt-2 text-sm text-muted">Approve does not charge. Reject does not charge. Both write a line on the thread.</p>
+              <p className="mt-2 text-sm text-muted">Pilot actions use mock providers. A real payment requires separate merchant validation and administrator enablement.</p>
             </div>
           }
         />
@@ -70,16 +70,16 @@ function Product() {
         <Band
           flip
           eyebrow="Listen"
-          title="Score the agent the way a QA lead would."
-          body="Policy, tone, resolution. Archal and the floor are scored apart, so a polite wrong answer cannot hide inside a high average. Threads under 75 stay marked. This is the conversation-intelligence layer, pointed at your own agent before it is pointed at a coaching program."
+          title="Inspect response checks and operator outcomes."
+          body="The quality view reports deterministic checks for citations, refund claims and persisted outcomes. These checks do not measure semantic correctness or tone. Human review and an evaluated dataset are required before trusting model quality."
           cta="Open quality"
           to="/console/quality"
           aside={
             <div className="grid grid-cols-3 gap-2">
               {[
-                ["Policy", "96"],
-                ["Tone", "86"],
-                ["Close", "93"],
+                ["Citation", "Check"],
+                ["Claims", "Check"],
+                ["Outcome", "Check"],
               ].map(([k, v]) => (
                 <div key={k} className="rounded-lg border border-line px-3 py-4">
                   <p className="font-mono text-xs text-muted">{k}</p>

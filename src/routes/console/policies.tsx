@@ -16,7 +16,7 @@ function Policies() {
         <div>
           <h1 className="font-display text-4xl leading-none">Policies</h1>
           <p className="mt-3 max-w-xl text-sm text-muted">
-            {brand ? `${brand.name} answers from these clauses.` : "Published clauses."} If a clause is missing, Archal says it does not know.
+            {brand ? `${brand.name} answers from the snapshots on the D2C agent.` : "Published clauses."} A missing clause is not invented.
           </p>
         </div>
         <Link to="/console/knowledge" className="text-sm text-muted hover:text-fg">

@@ -14,7 +14,7 @@ const BrandContext = createContext<BrandContextValue | null>(null);
 
 export function BrandProvider({ children }: { children: ReactNode }) {
   const [brands, setBrands] = useState<BrandRow[]>([]);
-  const [brandId, setBrandIdState] = useState("northline");
+  const [brandId, setBrandIdState] = useState("");
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -23,6 +23,7 @@ export function BrandProvider({ children }: { children: ReactNode }) {
     listBrands()
       .then((rows) => {
         setBrands(rows);
+        setBrandIdState(rows[0]?.id || "");
         setError("");
       })
       .catch((err: unknown) => {

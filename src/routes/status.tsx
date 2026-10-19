@@ -20,8 +20,8 @@ function StatusPage() {
   return (
     <Page
       eyebrow="Status"
-      title="Sandbox is up. Live tools are off."
-      lede="This page reads the server status function. It does not claim a paid host or a restored database."
+      title="Service status"
+      lede="Current status reported by the support service."
     >
       {error && <p className="text-sm text-muted">{error}</p>}
       {!data && !error && <p className="text-sm text-muted">Checking the runtime…</p>}
@@ -30,7 +30,6 @@ function StatusPage() {
           <div className="grid gap-2 border-b border-line px-4 py-4 md:grid-cols-3">
             <Stat k="Mode" v={data.mode} />
             <Stat k="Stripe" v={data.stripe} />
-            <Stat k="Refund cap" v={`₹${data.refundCap}`} />
           </div>
           <ul>
             {data.checks.map((c) => (

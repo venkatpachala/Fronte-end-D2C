@@ -22,7 +22,7 @@ function Quality() {
     <div>
       <h1 className="font-display text-4xl leading-none">Quality</h1>
       <p className="mt-3 max-w-xl text-sm text-muted">
-        Every scored thread is graded on policy, tone, and whether the case actually closed. Low scores stay visible.
+        Checks on recorded conversations: citations present, refund claims consistent with execution, and outcome consistency. These checks do not grade tone or semantic answer correctness.
       </p>
       {loading && !data ? <div className="mt-6"><LoadingLines /></div> : null}
       {error ? (
@@ -33,9 +33,9 @@ function Quality() {
       {rows.length > 0 ? (
         <>
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
-            <Score k="Policy" ai={mean(ai.map((r) => r.policyScore))} human={mean(human.map((r) => r.policyScore))} />
-            <Score k="Tone" ai={mean(ai.map((r) => r.toneScore))} human={mean(human.map((r) => r.toneScore))} />
-            <Score k="Resolution" ai={mean(ai.map((r) => r.resolutionScore))} human={mean(human.map((r) => r.resolutionScore))} />
+            <Score k="Citations" ai={mean(ai.map((r) => r.policyScore))} human={mean(human.map((r) => r.policyScore))} />
+            <Score k="Action claims" ai={mean(ai.map((r) => r.toneScore))} human={mean(human.map((r) => r.toneScore))} />
+            <Score k="Outcome consistency" ai={mean(ai.map((r) => r.resolutionScore))} human={mean(human.map((r) => r.resolutionScore))} />
           </div>
           <ul className="mt-6 divide-y divide-line overflow-hidden rounded-lg border border-line">
             {rows.map((row) => {
@@ -50,7 +50,7 @@ function Quality() {
                   </div>
                   <p className="mt-2 text-sm text-muted">{row.note}</p>
                   <p className={`mt-3 font-mono text-xs tabular-nums ${low ? "text-accent" : "text-muted"}`}>
-                    Policy {row.policyScore} · Tone {row.toneScore} · Resolution {row.resolutionScore}
+                    Citations {row.policyScore} · Action claims {row.toneScore} · Outcome {row.resolutionScore}
                   </p>
                 </li>
               );
